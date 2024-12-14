@@ -60,18 +60,20 @@ main .normal
 
     justify-content: space-between;
     justify-items: center;
+
+    transition: all 0.3s ease-in-out;
 }
 
 main .advance
 {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 4em);
+    grid-template-rows: repeat(5, 4em);
 }
 
 main .normal
 {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 3em);
+    grid-template-rows: repeat(5, 3em);
 }
 
 
