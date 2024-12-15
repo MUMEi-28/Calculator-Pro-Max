@@ -25,8 +25,10 @@
     </header>
 
     <main>
-        <input type="text" id="display" class="history">
-        <input type="text" id="display">
+        <div class="mainDisplay">
+            <input type="text" id="history" value="ASJDAOSDJAPJAPO">
+            <input type="text" id="display">
+        </div>
 
         <div class="normal" id="calculator">
             <button class="hiddenFeatures removeDisplay">2nd</button>
@@ -42,34 +44,34 @@
             <button class="hiddenFeatures removeDisplay">&#41;</button>
 
             <button class="hiddenFeatures removeDisplay">&#8730;x</button>
-            <button class="orange">AC</button>
-            <button class="orange">DEL</button>
-            <button class="orange">%</button>
-            <button class="orange">/</button>
+            <button onclick="ClearAll()" class="orange">AC</button>
+            <button onclick="Backspace()" class="orange">DEL</button>
+            <button onclick="OnClickOperators('%')" class="orange">%</button>
+            <button onclick="OnClickOperators('/')" class="orange">/</button>
 
             <button class="hiddenFeatures removeDisplay">x!</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="orange">X</button>
+            <button onclick="OnClickNumbers('7')">7</button>
+            <button onclick="OnClickNumbers('8')">8</button>
+            <button onclick="OnClickNumbers('9')">9</button>
+            <button onclick="OnClickOperators('*')" class="orange">X</button>
 
             <button class="hiddenFeatures removeDisplay">1/x</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="orange">-</button>
+            <button onclick="OnClickNumbers('4')">4</button>
+            <button onclick="OnClickNumbers('5')">5</button>
+            <button onclick="OnClickNumbers('6')">6</button>
+            <button onclick="OnClickOperators('-')" class="orange">-</button>
 
             <button class="hiddenFeatures removeDisplay">&pi;</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="orange">+</button>
+            <button onclick="OnClickNumbers('1')">1</button>
+            <button onclick="OnClickNumbers('2')">2</button>
+            <button onclick="OnClickNumbers('3')">3</button>
+            <button onclick="OnClickOperators('+')" class="orange">+</button>
 
             <button class="hiddenFeatures removeDisplay">e</button>
             <button class="orange" id="toggleLandscape">R</button>
-            <button>0</button>
-            <button>.</button>
-            <button id="equals">=</button>
+            <button onclick="OnClickNumbers('0')">0</button>
+            <button onclick="AddPeriod()">.</button>
+            <button onclick="Calculate()">=</button>
         </div>
     </main>
 </body>
