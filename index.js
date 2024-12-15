@@ -44,28 +44,46 @@ display.value = "0";
 console.log(typeof display.value);
 
 var hasPeriod = false;
+var isStartingZeroValue = true;     // Remove the unexpected error number
 
 // DEBUGGING
 const allButtons = document.getElementsByTagName("button");
 
 let lastValue;
+
+// To re-apply all changes on button click
 for (let i = 0; i < allButtons.length; i++)
 {
     allButtons[i].addEventListener('click', function ()
     {
         lastValue = display.value.toString().charAt(display.value.length - 1);
+
+
+        console.log("ZERO VALUE: " + isStartingZeroValue);
     });
 }
 
 
 function OnClickNumbers(input)
 {
-    // Remove the unexpected error number
-    display.value = display.value.slice(0, -1);
-    display.value += input;
+
+    if (isStartingZeroValue)
+    {
+        isStartingZeroValue = false;
+
+        display.value = display.value.slice(0, -1);
+        display.value += input;
+    }
+    else
+    {
+        display.value += input;
+    }
 }
 function ClearAll()
 {
+    isStartingZeroValue = true;
+    hasPeriod = false;
+
     display.value = "0";
 }
 function Backspace()
