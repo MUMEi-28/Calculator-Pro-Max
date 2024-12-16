@@ -58,8 +58,6 @@ for (let i = 0; i < allButtons.length; i++)
     {
         lastValue = display.value.toString().charAt(display.value.length - 1);
 
-
-        console.log("ZERO VALUE: " + isStartingZeroValue);
     });
 }
 
@@ -97,8 +95,30 @@ function Calculate()
 {
     try
     {
+        if (lastValue === ".")
+        {
+            // If the last value is [.] then remove period
+            display.value = display.value.replace(0);
+
+            console.log("REMOVED PERIOD");
+
+            // Reupdate the last value again
+            lastValue = display.value.charAt(display.value.length - 1);
+
+            if (lastValue === "-" ||
+                lastValue === "/" ||
+                lastValue === "+" ||
+                lastValue === "*" ||
+                lastValue === "%"
+            )
+            {
+                // If there is an operator after [.] then remove operator too
+                display.value = display.value.slice(0, -1);
+                console.log("REMOVED OPERATOR WITH PERIOD");
+            }
+        }
         // Don't include [-=/*%] on the evaluation
-        if (lastValue === "-" ||
+        else if (lastValue === "-" ||
             lastValue === "/" ||
             lastValue === "+" ||
             lastValue === "*" ||
@@ -107,12 +127,12 @@ function Calculate()
         {
             // Remove any operators first before evaluating
             display.value = display.value.slice(0, -1);
-            display.value = eval(display.value);
+            console.log("REMOVED OPERATOR ONLY");
         }
-        else
-        {
-            display.value = eval(display.value);
-        }
+
+        display.value = eval(display.value);
+
+
     }
     catch (error)
     {
