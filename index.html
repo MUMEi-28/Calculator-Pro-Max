@@ -31,17 +31,17 @@
         </div>
 
         <div class="normal" id="calculator">
-            <button class="hiddenFeatures removeDisplay">2nd</button>
-            <button class="hiddenFeatures removeDisplay">deg</button>
-            <button class="hiddenFeatures removeDisplay">sin</button>
-            <button class="hiddenFeatures removeDisplay">cos</button>
-            <button class="hiddenFeatures removeDisplay">tan</button>
+            <button class="hiddenFeatures removeDisplay" id="second">2nd</button>
+            <button class="hiddenFeatures removeDisplay" id="deg">deg</button>
+            <button onclick="OnClickFunctions('sin(')" class="hiddenFeatures removeDisplay" id="sin">sin</button>
+            <button onclick="OnClickFunctions('cos(')" class="hiddenFeatures removeDisplay" id="cos">cos</button>
+            <button onclick="OnClickFunctions('tan(')" class="hiddenFeatures removeDisplay" id="tan">tan</button>
 
             <button class="hiddenFeatures removeDisplay">x^y</button>
             <button class="hiddenFeatures removeDisplay">lg</button>
             <button class="hiddenFeatures removeDisplay">ln</button>
-            <button class="hiddenFeatures removeDisplay">&#40;</button>
-            <button class="hiddenFeatures removeDisplay">&#41;</button>
+            <button onclick="OnClickParenthesis('(')" class="hiddenFeatures removeDisplay">&#40;</button>
+            <button onclick="OnClickParenthesis(')')" class="hiddenFeatures removeDisplay">&#41;</button>
 
             <button class="hiddenFeatures removeDisplay">&#8730;x</button>
             <button onclick="ClearAll()" class="orange">AC</button>
