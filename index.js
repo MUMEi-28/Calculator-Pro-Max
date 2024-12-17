@@ -41,8 +41,6 @@ landscapeButton.addEventListener('click', event =>
 const display = document.getElementById("display");
 display.value = "0";
 
-console.log(typeof display.value);
-
 var hasPeriod = false;
 var isStartingZeroValue = true;     // Remove the unexpected error number
 
@@ -91,57 +89,40 @@ function Backspace()
         display.value = display.value.slice(0, -1);
     }
 }
+
 function Calculate()
 {
     try
     {
-        if (lastValue === ".")
+        // If [+-/%*] is the last value then remove the last value
+        if (/[/*%+-]$/.test(display.value))
         {
-            // If the last value is [.] then remove period
-            display.value = display.value.replace(0);
-
-            console.log("REMOVED PERIOD");
-
-            // Reupdate the last value again
-            lastValue = display.value.charAt(display.value.length - 1);
-
-            if (lastValue === "-" ||
-                lastValue === "/" ||
-                lastValue === "+" ||
-                lastValue === "*" ||
-                lastValue === "%"
-            )
-            {
-                // If there is an operator after [.] then remove operator too
-                display.value = display.value.slice(0, -1);
-                console.log("REMOVED OPERATOR WITH PERIOD");
-            }
-        }
-        // Don't include [-=/*%] on the evaluation
-        else if (lastValue === "-" ||
-            lastValue === "/" ||
-            lastValue === "+" ||
-            lastValue === "*" ||
-            lastValue === "%"
-        )
-        {
-            // Remove any operators first before evaluating
             display.value = display.value.slice(0, -1);
-            console.log("REMOVED OPERATOR ONLY");
+
+            console.log("REMOVED LAST OPERATOR");
+        }
+
+
+
+        // Change all periods to zero if the input is like this [+.+.+.] [-.-.-.] [%.%.%.%]
+        if (/([*/%+-]\.)/.test(display.value))
+        {
+            display.value = display.value.replace(/([^0-9])\./g, "$1" + "0");
+
+            console.log("REPLACED ALL PATTERNED PERIODS TO 0");
         }
 
         display.value = eval(display.value);
-
-
     }
     catch (error)
     {
         display.value = error;
     }
+
 }
 function OnClickOperators(operator)
 {
-
+    isStartingZeroValue = false;
     hasPeriod = false;
 
     // Change the last operator into the latest value to prevent this [-=/*%]
@@ -164,8 +145,6 @@ function OnClickOperators(operator)
 
 function AddPeriod()
 {
-
-
     if (lastValue !== "." && !hasPeriod)
     {
         display.value += ".";
