@@ -159,14 +159,21 @@ function Calculate()
         }
 
 
-        console.log(display.value);
+        console.log("RAW: " + display.value);
+
+        // Balance the parenthesis
+        const openParentheses = (display.value.match(/\(/g)).length; // Count how many open parenthesis there are
+        display.value += ')'.repeat(openParentheses);
+
+        console.log("BALANCED: " + display.value);
         // [\b] string boundary
         // Replace sin cos tan to math functions
-        display.value = display.value.replace(/\bsin\b/g, "Math.sin")
-            .replace(/\bcos\b/g, "Math.cos")
-            .replace(/\btan\b/g, "Math.tan");
+        display.value = display.value
+            .replace(/\bsin\s*\(/g, "Math.sin(")
+            .replace(/\bcos\s*\(/g, "Math.cos(")
+            .replace(/\btan\s*\(/g, "Math.tan(");
 
-        console.log(display.value);
+        console.log("FINAL VALUE: " + display.value);
 
         display.value = eval(display.value);
     }
