@@ -4,7 +4,7 @@ const hiddenButtonsArray = document.querySelectorAll(".hiddenFeatures");
 
 
 // START WITH AN ADVANCE CALCULATOR
-calculator.classList.replace("normal", "advance");
+/* calculator.classList.replace("normal", "advance");
 
 hiddenButtonsArray.forEach(button =>
 {
@@ -16,7 +16,7 @@ hiddenButtonsArray.forEach(button =>
 
     button.classList.remove("removeDisplay");
 });
-
+ */
 
 // Changes the view mode
 document.getElementById("toggleLandscape").addEventListener('click', function ()
@@ -70,6 +70,13 @@ for (let i = 0; i < allButtons.length; i++)
 {
     allButtons[i].addEventListener('click', function ()
     {
+
+
+        /*  if (display.value === "ERROR")
+         {
+             display.value = "0";
+         }
+  */
         lastValue = display.value.toString().charAt(display.value.length - 1);
 
     });
@@ -162,20 +169,29 @@ function Calculate()
         console.log("RAW: " + display.value);
 
         // Balance the parenthesis
-        const openParentheses = (display.value.match(/\(/g)).length; // Count how many open parenthesis there are
-        display.value += ')'.repeat(openParentheses);
+        const openParentheses = (display.value.match(/\(/g) || []).length;
+        const closeParenthesis = (display.value.match(/\)/g) || []).length;
+        // Count how many open parenthesis there are
 
-        console.log("BALANCED: " + display.value);
-        // [\b] string boundary
-        // Replace sin cos tan to math functions
-        display.value = display.value
-            .replace(/\bsin\s*\(/g, "Math.sin(")
-            .replace(/\bcos\s*\(/g, "Math.cos(")
-            .replace(/\btan\s*\(/g, "Math.tan(");
+        if (openParentheses > 0)
+        {
+            // Subtract the closing to opening to make sure if the user added a closing or not
+            display.value += ')'.repeat(openParentheses - closeParenthesis);
+            console.log("BALANCED: " + display.value);
 
-        console.log("FINAL VALUE: " + display.value);
+            // [\b] string boundary
+            // Replace sin cos tan to math functions
+            display.value = display.value
+                .replace(/\bsin\s*\(/g, "Math.sin(")
+                .replace(/\bcos\s*\(/g, "Math.cos(")
+                .replace(/\btan\s*\(/g, "Math.tan(");
+
+            console.log("FINAL VALUE: " + display.value);
+        }
 
         display.value = eval(display.value);
+
+
     }
     catch (error)
     {
@@ -241,3 +257,42 @@ document.getElementById("second").addEventListener("click", function ()
 );
 
 // ADVANCE CALCULATOR REGION END
+
+
+
+
+// TOP BUTTONS REGION START
+
+const mainCalculatorButton = document.getElementById("mainCalculator");
+const moreCalculatorButton = document.getElementById("moreCalculator");
+
+
+const mainPanel = document.getElementById("mainPanel")
+const morePanel = document.getElementById("morePanel")
+
+mainCalculatorButton.addEventListener("click", function ()
+{
+    // Update the buttons style
+    mainCalculatorButton.classList.add("current");
+    moreCalculatorButton.classList.remove("current");
+
+    // Update the panels
+    morePanel.classList.add("hideCurrentPanel")
+    mainPanel.classList.remove("hideCurrentPanel");
+});
+moreCalculatorButton.addEventListener("click", function ()
+{
+    // Update the buttons style
+    moreCalculatorButton.classList.add("current");
+    mainCalculatorButton.classList.remove("current");
+
+
+    // Update the panels
+    mainPanel.classList.add("hideCurrentPanel")
+    morePanel.classList.remove("hideCurrentPanel");
+
+});
+
+
+
+// TOP BUTTONS REGION END

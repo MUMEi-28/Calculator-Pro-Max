@@ -11,67 +11,91 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    Main Calculator
-                </li>
-                <li>
-                    More
-                </li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
-        <div class="mainDisplay">
-            <input type="text" id="history" value="ASJDAOSDJAPJAPO">
-            <input type="text" id="display">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="mainCalculator" class="current">Main</button>
+                    </li>
+                    <li>
+                        <button id="moreCalculator">More</button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div id="mainPanel" class="hideCurrentPanel">
+
+            <div class="mainDisplay">
+                <input type="text" id="history" value="ASJDAOSDJAPJAPO">
+                <input type="text" id="display">
+            </div>
+
+            <div class="normal" id="calculator">
+                <button class="hiddenFeatures removeDisplay" id="second">2nd</button>
+                <button class="hiddenFeatures removeDisplay" id="deg">deg</button>
+                <button onclick="OnClickFunctions('sin(')" class="hiddenFeatures removeDisplay" id="sin">sin</button>
+                <button onclick="OnClickFunctions('cos(')" class="hiddenFeatures removeDisplay" id="cos">cos</button>
+                <button onclick="OnClickFunctions('tan(')" class="hiddenFeatures removeDisplay" id="tan">tan</button>
+
+                <button class="hiddenFeatures removeDisplay">x^y</button>
+                <button class="hiddenFeatures removeDisplay">lg</button>
+                <button class="hiddenFeatures removeDisplay">ln</button>
+                <button onclick="OnClickParenthesis('(')" class="hiddenFeatures removeDisplay">&#40;</button>
+                <button onclick="OnClickParenthesis(')')" class="hiddenFeatures removeDisplay">&#41;</button>
+
+                <button class="hiddenFeatures removeDisplay">&#8730;x</button>
+                <button onclick="ClearAll()" class="orange">AC</button>
+                <button onclick="Backspace()" class="orange">DEL</button>
+                <button onclick="OnClickOperators('%')" class="orange">%</button>
+                <button onclick="OnClickOperators('/')" class="orange">/</button>
+
+                <button class="hiddenFeatures removeDisplay">x!</button>
+                <button onclick="OnClickNumbers('7')">7</button>
+                <button onclick="OnClickNumbers('8')">8</button>
+                <button onclick="OnClickNumbers('9')">9</button>
+                <button onclick="OnClickOperators('*')" class="orange">X</button>
+
+                <button class="hiddenFeatures removeDisplay">1/x</button>
+                <button onclick="OnClickNumbers('4')">4</button>
+                <button onclick="OnClickNumbers('5')">5</button>
+                <button onclick="OnClickNumbers('6')">6</button>
+                <button onclick="OnClickOperators('-')" class="orange">-</button>
+
+                <button class="hiddenFeatures removeDisplay">&pi;</button>
+                <button onclick="OnClickNumbers('1')">1</button>
+                <button onclick="OnClickNumbers('2')">2</button>
+                <button onclick="OnClickNumbers('3')">3</button>
+                <button onclick="OnClickOperators('+')" class="orange">+</button>
+
+                <button class="hiddenFeatures removeDisplay">e</button>
+                <button class="orange" id="toggleLandscape">R</button>
+                <button onclick="OnClickNumbers('0')">0</button>
+                <button onclick="AddPeriod()">.</button>
+                <button onclick="Calculate()">=</button>
+            </div>
         </div>
 
-        <div class="normal" id="calculator">
-            <button class="hiddenFeatures removeDisplay" id="second">2nd</button>
-            <button class="hiddenFeatures removeDisplay" id="deg">deg</button>
-            <button onclick="OnClickFunctions('sin(')" class="hiddenFeatures removeDisplay" id="sin">sin</button>
-            <button onclick="OnClickFunctions('cos(')" class="hiddenFeatures removeDisplay" id="cos">cos</button>
-            <button onclick="OnClickFunctions('tan(')" class="hiddenFeatures removeDisplay" id="tan">tan</button>
 
-            <button class="hiddenFeatures removeDisplay">x^y</button>
-            <button class="hiddenFeatures removeDisplay">lg</button>
-            <button class="hiddenFeatures removeDisplay">ln</button>
-            <button onclick="OnClickParenthesis('(')" class="hiddenFeatures removeDisplay">&#40;</button>
-            <button onclick="OnClickParenthesis(')')" class="hiddenFeatures removeDisplay">&#41;</button>
+        <div id="morePanel">
 
-            <button class="hiddenFeatures removeDisplay">&#8730;x</button>
-            <button onclick="ClearAll()" class="orange">AC</button>
-            <button onclick="Backspace()" class="orange">DEL</button>
-            <button onclick="OnClickOperators('%')" class="orange">%</button>
-            <button onclick="OnClickOperators('/')" class="orange">/</button>
+            <button>Age</button>
+            <button>Area</button>
+            <button>BMI</button>
+            <button>Data</button>
+            <button>Date</button>
+            <button>Discount</button>
+            <button>Length</button>
+            <button>Mass</button>
+            <button style="white-space: nowrap;">Numeral System</button>
+            <button>Speed</button>
+            <button>Temperature</button>
+            <button>Time</button>
+            <button>Volume</button>
+            <button>Currency</button>
+            <button>Investment</button>
+            <button>Loan</button>
 
-            <button class="hiddenFeatures removeDisplay">x!</button>
-            <button onclick="OnClickNumbers('7')">7</button>
-            <button onclick="OnClickNumbers('8')">8</button>
-            <button onclick="OnClickNumbers('9')">9</button>
-            <button onclick="OnClickOperators('*')" class="orange">X</button>
-
-            <button class="hiddenFeatures removeDisplay">1/x</button>
-            <button onclick="OnClickNumbers('4')">4</button>
-            <button onclick="OnClickNumbers('5')">5</button>
-            <button onclick="OnClickNumbers('6')">6</button>
-            <button onclick="OnClickOperators('-')" class="orange">-</button>
-
-            <button class="hiddenFeatures removeDisplay">&pi;</button>
-            <button onclick="OnClickNumbers('1')">1</button>
-            <button onclick="OnClickNumbers('2')">2</button>
-            <button onclick="OnClickNumbers('3')">3</button>
-            <button onclick="OnClickOperators('+')" class="orange">+</button>
-
-            <button class="hiddenFeatures removeDisplay">e</button>
-            <button class="orange" id="toggleLandscape">R</button>
-            <button onclick="OnClickNumbers('0')">0</button>
-            <button onclick="AddPeriod()">.</button>
-            <button onclick="Calculate()">=</button>
         </div>
     </main>
 </body>
