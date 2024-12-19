@@ -92,6 +92,7 @@ header nav ul button.current::after
 #mainCalcPanel .hideCurrentPanel
 {
     display: none;
+
 }
 
 

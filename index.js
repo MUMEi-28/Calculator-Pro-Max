@@ -276,6 +276,7 @@ mainCalculatorButton.addEventListener("click", function ()
     mainCalculatorButton.classList.add("current");
     moreCalculatorButton.classList.remove("current");
 
+    console.log("MAIN BTTON CLICKED");
     // Update the panels
     morePanel.classList.add("hideCurrentPanel")
     mainPanel.classList.remove("hideCurrentPanel");
@@ -300,7 +301,6 @@ moreCalculatorButton.addEventListener("click", function ()
 
 
 /* || AGE CALCULATOR */
-
 
 document.getElementById("calculateAge").addEventListener("click", function ()
 {
@@ -388,4 +388,23 @@ function getDayOfWeek(dateString)
     return daysOfWeek[date.getDay()]; // Get the day of the week and return it
 }
 
+// Back button that returns to the more panel
+document.getElementById("returnToMorePanel").addEventListener('click', function ()
+{
+    document.getElementById("AgePanel").style.display = 'none';
+    mainPanel.classList.remove("hideCurrentPanel");
 
+    moreCalculatorButton.classList.add("current");
+    mainCalculatorButton.classList.remove("current");
+});
+
+
+/* || MORE PANEL BUTTONS */
+document.getElementById("ageButton").addEventListener("click", function ()
+{
+    document.getElementById("AgePanel").style.display = "";
+    mainPanel.classList.add("hideCurrentPanel");
+
+
+
+});
