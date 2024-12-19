@@ -17,6 +17,16 @@ body
     height: 100vh;
 }
 
+/* || UTILITY CLASSES */
+.removeDisplay
+{
+    display: none;
+}
+
+.current
+{
+    border-bottom-color: white;
+}
 
 header nav ul
 {
@@ -74,15 +84,15 @@ header nav ul button.current::after
     width: 100%;
 }
 
-.current
-{
-    border-bottom-color: white;
-}
 
+
+#mainPanel .hideCurrentPanel,
 #mainPanel.hideCurrentPanel,
-#morePanel.hideCurrentPanel
+#morePanel.hideCurrentPanel,
+#mainCalcPanel .hideCurrentPanel
 {
     display: none;
+
 }
 
 
@@ -196,13 +206,17 @@ main .normal button
 }
 
 main button:hover,
-#morePanel button:hover
+#morePanel button:hover,
+#AgePanel header button:hover,
+#AgePanel .ageSubmit:hover
 {
     background-color: #1c1c1c;
 }
 
 main button:active,
-#morePanel button:active
+#morePanel button:active,
+#AgePanel header button:active,
+#AgePanel .ageSubmit:active
 {
     background-color: #2c2c2c;
 }
@@ -238,10 +252,7 @@ main .advance .hiddenFeatures
 
 }
 
-.removeDisplay
-{
-    display: none;
-}
+
 
 #morePanel
 {
@@ -268,4 +279,202 @@ main .advance .hiddenFeatures
     border: none;
 
     border-radius: 10px;
+}
+
+/* || AGE PANEL */
+#AgePanel
+{
+    background-color: #090000;
+    width: 450px;
+    height: 700px;
+
+    color: white;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#AgePanel header
+{
+    display: flex;
+
+    justify-content: space-between;
+    text-align: left;
+
+
+    padding: 10px;
+}
+
+#AgePanel header h3
+{
+    width: 100%;
+    text-align: center;
+
+    font-size: 2rem;
+    font-weight: bolder;
+
+    padding-right: 50px;
+    color: white;
+}
+
+#AgePanel header button
+{
+    padding: 10px 20px;
+    background-color: inherit;
+    border-radius: 20px;
+
+    border: 1px solid grey;
+    color: white;
+
+}
+
+#AgePanel main
+{
+    background-color: inherit;
+    padding: 10px 30px;
+}
+
+#AgePanel .inputs p
+{
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: 1.1rem;
+}
+
+#AgePanel main p input
+{
+    color-scheme: dark;
+    border: none;
+
+    font-size: 1.1rem;
+}
+
+.agePanelOutput .ageOutput
+{
+    text-align: center;
+}
+
+.agePanelOutput .ageOutput .ageYearRow
+{
+    display: flex;
+    align-items: flex-end;
+
+}
+
+
+.agePanelOutput .ageOutput .ageYearRow h2
+{
+    color: orange;
+}
+
+.agePanelOutput .ageOutput .ageYearRow p
+{
+    padding: 0 0 20px 10px;
+    font-size: 1rem;
+}
+
+.agePanelOutput .ageOutput #ageCalculation
+{
+    font-size: 5rem;
+    font-weight: thin;
+
+}
+
+.agePanelOutput .ageOutput h1
+{
+    font-size: 2.5rem;
+    color: #dadada
+}
+
+#AgePanel .agePanelOutput
+{
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#AgePanel .agePanelOutput .nextBdayOutput
+{
+    border-left: 1px solid white;
+    padding: 0 20px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+#AgePanel .agePanelOutput .nextBdayOutput h1
+{
+    color: orange;
+}
+
+.agePanelOutput .ageSummary
+{
+    grid-column: 1 / 3;
+
+    text-align: center;
+
+    margin: 15px 0;
+    border-top: 1px solid white;
+}
+
+.agePanelOutput .ageSummary h1
+{
+    padding: 20px 0;
+    color: orange;
+}
+
+
+.agePanelOutput .ageSummary .columns
+{
+    display: grid;
+    gap: 20px;
+
+    padding-top: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.agePanelOutput .ageSummary .columns h2
+{
+    font-size: 1.4rem;
+    font-weight: thin;
+}
+
+.agePanelOutput .ageSummary .columns p
+{
+
+    font-size: 1.2rem;
+
+    padding-top: 5px;
+}
+
+.agePanelOutput .additonalAgeInfo
+{
+    color: #dadada
+}
+
+#AgePanel .ageSubmit
+{
+    background-color: inherit;
+    color: orange;
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    margin: auto;
+
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 20px;
 }

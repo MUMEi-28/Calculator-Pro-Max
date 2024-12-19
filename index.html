@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <main>
+    <main id="mainPanel" class="hideCurrentPanel">
         <header>
             <nav>
                 <ul>
@@ -24,7 +24,7 @@
                 </ul>
             </nav>
         </header>
-        <div id="mainPanel" class="hideCurrentPanel">
+        <div id="mainCalcPanel" class="hideCurrentPanel">
 
             <div class="mainDisplay">
                 <input type="text" id="history" value="ASJDAOSDJAPJAPO">
@@ -78,8 +78,7 @@
 
 
         <div id="morePanel">
-
-            <button>Age</button>
+            <button id="ageButton">Age</button>
             <button>Area</button>
             <button>BMI</button>
             <button>Data</button>
@@ -95,9 +94,81 @@
             <button>Currency</button>
             <button>Investment</button>
             <button>Loan</button>
-
         </div>
+
+
     </main>
+
+
+    <section id="AgePanel">
+        <header>
+            <button class="returnToMorePanel" id="returnToMorePanel">Back</button>
+            <h3>Age</h3>
+        </header>
+        <main class="ageMain">
+            <div class="inputs">
+                <p>
+                    <label for="Birth">Date of Birth</label>
+                    <input type="date" id="birthDate">
+                </p>
+                <p>
+                    <label for="today">Today</label>
+                    <input type="date" id="currentDate">
+                </p>
+            </div>
+            <div class="agePanelOutput">
+
+                <div class="ageOutput">
+                    <h1>Age</h1>
+                    <div class="ageYearRow">
+                        <h2 id="ageCalculation">13</h2>
+                        <p>Years</p>
+                    </div>
+                    <p class="additonalAgeInfo" id="ageMonthCalculation">4 Months | 3 Days</p>
+                </div>
+
+                <div class="nextBdayOutput">
+                    <h1 style="white-space: nowrap;">Next Birthday</h1>
+                    <h2 class="additonalAgeInfo" id="dayOfTheWeekCalculation">Saturday</h2>
+                    <p class="additonalAgeInfo" id="nextBydayMonthCalculation">7 Months | 3 Days</p>
+                </div>
+
+                <div class="ageSummary">
+                    <h1>Summary</h1>
+                    <div class="columns">
+                        <div class="item">
+                            <h2 class="additonalAgeInfo">Years</h2>
+                            <p id="yearSummary">14</p>
+                        </div>
+                        <div class="item">
+                            <h2 class="additonalAgeInfo">Months</h2>
+                            <p id="monthSummary">172</p>
+                        </div>
+                        <div class="item">
+                            <h2 class="additonalAgeInfo">Weeks</h2>
+                            <p id="weekSummary">748</p>
+                        </div>
+                        <div class="item">
+                            <h2 class="additonalAgeInfo">Days</h2>
+                            <p id="daySummary">748</p>
+                        </div>
+                        <div class="item">
+                            <h2 class="additonalAgeInfo">Hours</h2>
+                            <p id="hourSummary">748</p>
+                        </div>
+                        <div class="item">
+                            <h2 class="additonalAgeInfo">Minutes</h2>
+                            <p id="minuteSummary">748</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+
+        <input type="submit" class="ageSubmit" value="Calculate" id="calculateAge">
+    </section>
 </body>
 
 </html>
