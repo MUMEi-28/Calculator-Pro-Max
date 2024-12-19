@@ -296,3 +296,96 @@ moreCalculatorButton.addEventListener("click", function ()
 
 
 // TOP BUTTONS REGION END
+
+
+
+/* || AGE CALCULATOR */
+
+
+document.getElementById("calculateAge").addEventListener("click", function ()
+{
+    CalculateAge();
+});
+
+// Call it to make sure the current is at the latest as always
+CalculateAge();
+function CalculateAge()
+{
+    const currentDate = document.getElementById("currentDate");
+    const birthDate = document.getElementById("birthDate");
+
+    birthDate.defaultValue = "2004-01-21";
+    currentDate.defaultValue = "2024-04-13";
+
+    const [birthYear, birthMonth, birthDay] = birthDate.value.split('-');
+    const [currentYear, currentMonth, currentDay] = currentDate.value.split("-");
+
+    // Update the age section
+    document.getElementById("ageCalculation").innerHTML = currentYear - birthYear;
+    document.getElementById("ageMonthCalculation").innerHTML = (currentMonth - birthMonth) + " Months | " + (birthDay - currentDay) + " Days";
+
+    // Update the next bday section
+    document.getElementById("dayOfTheWeekCalculation").innerHTML = getDayOfWeek(birthDate.value);
+    document.getElementById("nextBydayMonthCalculation").innerHTML = ((birthMonth - currentMonth) + 12) + " Months | " + (Math.abs((currentDay - birthDay) - currentDay)) + " Days";
+
+
+
+    // Calculate the total number of months
+    let yearsInMonths = (currentYear - birthYear) * 12;
+    let monthsInAge = currentMonth - birthMonth;
+
+    // If current month is before the birth month, subtract 1 year (12 months)
+    if (monthsInAge < 0)
+    {
+        yearsInMonths -= 12;
+        monthsInAge += 12; // Adjust months
+    }
+
+    // Calculate total months
+    let totalMonths = yearsInMonths + monthsInAge;
+
+    // Adjust for days: If the current day is before the birth day, subtract 1 month
+    if (currentDay < birthDay)
+    {
+        totalMonths--;
+    }
+
+
+    const birthDateObj = new Date(birthYear, birthMonth - 1, birthDay); // Month is 0-based
+    const currentDateObj = new Date(currentYear, currentMonth - 1, currentDay);
+
+    // Calculate the difference in time (milliseconds)
+    const timeDifference = currentDateObj - birthDateObj;
+
+    // Convert time difference from milliseconds to days
+    const totalDays = Math.floor(timeDifference / (1000 * 3600 * 24)); // Convert milliseconds to days
+
+    // Calculate total weeks
+    const totalWeeks = Math.floor(totalDays / 7); // Divide total days by 7
+
+
+    let remainingDays = totalDays - (totalMonths * 30);
+
+    // Calculate total hours and minutes
+    const totalHours = Math.floor(timeDifference / (1000 * 3600)); // Convert milliseconds to hours
+    const totalMinutes = Math.floor(timeDifference / (1000 * 60)); // Convert milliseconds to minutes
+
+
+    // Update the summary
+    document.getElementById("yearSummary").innerHTML = currentYear - birthYear;
+    document.getElementById("monthSummary").innerHTML = totalMonths;
+    document.getElementById("weekSummary").innerHTML = totalWeeks;
+    document.getElementById("daySummary").innerHTML = totalDays;
+    document.getElementById("hourSummary").innerHTML = totalHours;
+    document.getElementById("minuteSummary").innerHTML = totalMinutes;
+
+}
+// Get the date of the week   
+function getDayOfWeek(dateString)
+{
+    const date = new Date(dateString); // Convert the date string to a Date object
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return daysOfWeek[date.getDay()]; // Get the day of the week and return it
+}
+
+

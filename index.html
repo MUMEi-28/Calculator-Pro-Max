@@ -102,18 +102,18 @@
 
     <section id="AgePanel">
         <header>
-            <button>Back</button>
+            <button class="returnToMorePanel">Back</button>
             <h3>Age</h3>
         </header>
         <main class="ageMain">
             <div class="inputs">
                 <p>
                     <label for="Birth">Date of Birth</label>
-                    <input type="date">
+                    <input type="date" id="birthDate">
                 </p>
                 <p>
                     <label for="today">Today</label>
-                    <input type="date">
+                    <input type="date" id="currentDate">
                 </p>
             </div>
             <div class="agePanelOutput">
@@ -124,13 +124,13 @@
                         <h2 id="ageCalculation">13</h2>
                         <p>Years</p>
                     </div>
-                    <p class="additonalAgeInfo">4 Months | 3 Days</p>
+                    <p class="additonalAgeInfo" id="ageMonthCalculation">4 Months | 3 Days</p>
                 </div>
 
                 <div class="nextBdayOutput">
                     <h1 style="white-space: nowrap;">Next Birthday</h1>
-                    <h2 class="additonalAgeInfo">Saturday</h2>
-                    <p class="additonalAgeInfo">7 Months | 3 Days</p>
+                    <h2 class="additonalAgeInfo" id="dayOfTheWeekCalculation">Saturday</h2>
+                    <p class="additonalAgeInfo" id="nextBydayMonthCalculation">7 Months | 3 Days</p>
                 </div>
 
                 <div class="ageSummary">
@@ -138,27 +138,27 @@
                     <div class="columns">
                         <div class="item">
                             <h2 class="additonalAgeInfo">Years</h2>
-                            <p>14</p>
+                            <p id="yearSummary">14</p>
                         </div>
                         <div class="item">
                             <h2 class="additonalAgeInfo">Months</h2>
-                            <p>172</p>
+                            <p id="monthSummary">172</p>
                         </div>
                         <div class="item">
                             <h2 class="additonalAgeInfo">Weeks</h2>
-                            <p>748</p>
+                            <p id="weekSummary">748</p>
                         </div>
                         <div class="item">
                             <h2 class="additonalAgeInfo">Days</h2>
-                            <p>748</p>
+                            <p id="daySummary">748</p>
                         </div>
                         <div class="item">
                             <h2 class="additonalAgeInfo">Hours</h2>
-                            <p>748</p>
+                            <p id="hourSummary">748</p>
                         </div>
                         <div class="item">
                             <h2 class="additonalAgeInfo">Minutes</h2>
-                            <p>748</p>
+                            <p id="minuteSummary">748</p>
                         </div>
                     </div>
 
@@ -167,6 +167,7 @@
             </div>
         </main>
 
+        <input type="submit" class="ageSubmit" value="Calculate" id="calculateAge">
     </section>
 </body>
 

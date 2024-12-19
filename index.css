@@ -206,14 +206,16 @@ main .normal button
 
 main button:hover,
 #morePanel button:hover,
-#AgePanel header button:hover
+#AgePanel header button:hover,
+#AgePanel .ageSubmit:hover
 {
     background-color: #1c1c1c;
 }
 
 main button:active,
 #morePanel button:active,
-#AgePanel header button:active
+#AgePanel header button:active,
+#AgePanel .ageSubmit:active
 {
     background-color: #2c2c2c;
 }
@@ -288,6 +290,10 @@ main .advance .hiddenFeatures
     color: white;
 
     border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #AgePanel header
@@ -317,9 +323,9 @@ main .advance .hiddenFeatures
 {
     padding: 10px 20px;
     background-color: inherit;
+    border-radius: 20px;
 
-
-    border: none;
+    border: 1px solid grey;
     color: white;
 
 }
@@ -441,15 +447,14 @@ main .advance .hiddenFeatures
 
 .agePanelOutput .ageSummary .columns h2
 {
-    font-size: 0.8rem;
+    font-size: 1.4rem;
     font-weight: thin;
 }
 
 .agePanelOutput .ageSummary .columns p
 {
 
-    font-size: 3rem;
-    font-weight: thin;
+    font-size: 1.2rem;
 
     padding-top: 5px;
 }
@@ -457,4 +462,18 @@ main .advance .hiddenFeatures
 .agePanelOutput .additonalAgeInfo
 {
     color: #dadada
+}
+
+#AgePanel .ageSubmit
+{
+    background-color: inherit;
+    color: orange;
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    margin: auto;
+
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 20px;
 }
