@@ -4,7 +4,7 @@ const hiddenButtonsArray = document.querySelectorAll(".hiddenFeatures");
 
 
 // START WITH AN ADVANCE CALCULATOR
-/* calculator.classList.replace("normal", "advance");
+calculator.classList.replace("normal", "advance");
 
 hiddenButtonsArray.forEach(button =>
 {
@@ -16,7 +16,7 @@ hiddenButtonsArray.forEach(button =>
 
     button.classList.remove("removeDisplay");
 });
- */
+
 
 // Changes the view mode
 document.getElementById("toggleLandscape").addEventListener('click', function ()
@@ -82,7 +82,19 @@ for (let i = 0; i < allButtons.length; i++)
     });
 }
 
+const deg = document.getElementById("deg");
 
+deg.addEventListener('click', function ()
+{
+    if (deg.innerHTML === "deg")
+    {
+        deg.innerHTML = "rad";
+    }
+    else
+    {
+        deg.innerHTML = "deg";
+    }
+});
 
 function OnClickFunctions(functionKey)
 {
@@ -184,7 +196,9 @@ function Calculate()
             display.value = display.value
                 .replace(/\bsin\s*\(/g, "Math.sin(")
                 .replace(/\bcos\s*\(/g, "Math.cos(")
-                .replace(/\btan\s*\(/g, "Math.tan(");
+                .replace(/\btan\s*\(/g, "Math.tan(")
+                .replace(/\blog\s*\(/g, "Math.log(")
+                .replace(/\blog10\s*\(/g, "Math.log10(");
 
             console.log("FINAL VALUE: " + display.value);
         }
@@ -199,6 +213,10 @@ function Calculate()
     }
 
 }
+
+console.log(Math.log10(9));
+console.log(Math.log(9));
+
 function OnClickOperators(operator)
 {
     isStartingZeroValue = false;
@@ -267,6 +285,7 @@ const mainCalculatorButton = document.getElementById("mainCalculator");
 const moreCalculatorButton = document.getElementById("moreCalculator");
 
 
+const mainCalcPanel = document.getElementById("mainCalcPanel");
 const mainPanel = document.getElementById("mainPanel")
 const morePanel = document.getElementById("morePanel")
 
@@ -280,6 +299,9 @@ mainCalculatorButton.addEventListener("click", function ()
     // Update the panels
     morePanel.classList.add("hideCurrentPanel")
     mainPanel.classList.remove("hideCurrentPanel");
+    mainCalcPanel.classList.remove("hideCurrentPanel");
+
+
 });
 moreCalculatorButton.addEventListener("click", function ()
 {
@@ -289,7 +311,9 @@ moreCalculatorButton.addEventListener("click", function ()
 
 
     // Update the panels
-    mainPanel.classList.add("hideCurrentPanel")
+    //   mainPanel.classList.add("hideCurrentPanel")
+    mainCalcPanel.classList.add("hideCurrentPanel");
+
     morePanel.classList.remove("hideCurrentPanel");
 
 });

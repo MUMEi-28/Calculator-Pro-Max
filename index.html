@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <main id="mainPanel" class="hideCurrentPanel">
+    <main id="mainPanel">
         <header>
             <nav>
                 <ul>
@@ -24,7 +24,7 @@
                 </ul>
             </nav>
         </header>
-        <div id="mainCalcPanel" class="hideCurrentPanel">
+        <div id="mainCalcPanel">
 
             <div class="mainDisplay">
                 <input type="text" id="history" value="ASJDAOSDJAPJAPO">
@@ -39,8 +39,8 @@
                 <button onclick="OnClickFunctions('tan(')" class="hiddenFeatures removeDisplay" id="tan">tan</button>
 
                 <button class="hiddenFeatures removeDisplay">x^y</button>
-                <button class="hiddenFeatures removeDisplay">lg</button>
-                <button class="hiddenFeatures removeDisplay">ln</button>
+                <button onclick="OnClickFunctions('log(')" class="hiddenFeatures removeDisplay">lg</button>
+                <button onclick="OnClickFunctions('log(')" class="hiddenFeatures removeDisplay">ln</button>
                 <button onclick="OnClickParenthesis('(')" class="hiddenFeatures removeDisplay">&#40;</button>
                 <button onclick="OnClickParenthesis(')')" class="hiddenFeatures removeDisplay">&#41;</button>
 
@@ -77,7 +77,7 @@
         </div>
 
 
-        <div id="morePanel">
+        <div id="morePanel" class="hideCurrentPanel">
             <button id="ageButton">Age</button>
             <button>Area</button>
             <button>BMI</button>
@@ -100,7 +100,7 @@
     </main>
 
 
-    <section id="AgePanel">
+    <section id="AgePanel" style="display: none;">
         <header>
             <button class="returnToMorePanel" id="returnToMorePanel">Back</button>
             <h3>Age</h3>
