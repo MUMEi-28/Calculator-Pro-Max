@@ -57,6 +57,10 @@ document.getElementById("toggleLandscape").addEventListener('click', function ()
 const display = document.getElementById("display");
 display.value = "0";
 
+
+// Makes sure to return to 0 display after calculation when pressed any functions
+var justSolvedEquation = false;
+
 var hasPeriod = false;
 var isStartingZeroValue = true;     // Remove the unexpected error number
 
@@ -82,6 +86,7 @@ for (let i = 0; i < allButtons.length; i++)
     });
 }
 
+
 const deg = document.getElementById("deg");
 
 deg.addEventListener('click', function ()
@@ -98,17 +103,30 @@ deg.addEventListener('click', function ()
 
 function OnClickFunctions(functionKey)
 {
-    if (isStartingZeroValue)
+    if (!justSolvedEquation)
     {
-        isStartingZeroValue = false;
 
-        display.value = display.value.slice(0, -1);
-        display.value += functionKey;
+        if (isStartingZeroValue)
+        {
+
+            isStartingZeroValue = false;
+
+            display.value = display.value.slice(0, -1);
+            display.value += functionKey;
+        }
+        else
+        {
+            display.value += functionKey;
+        }
     }
     else
     {
-        display.value += functionKey;
+        display.value = display.value.slice(0, -1);
+        display.value = functionKey;
+        justSolvedEquation = false;
     }
+
+
 }
 
 function OnClickParenthesis(input)
@@ -157,6 +175,9 @@ function Backspace()
 
 function Calculate()
 {
+
+    justSolvedEquation = true;
+
     try
     {
         // If [+-/%*] is the last value then remove the last value
@@ -191,17 +212,17 @@ function Calculate()
             display.value += ')'.repeat(openParentheses - closeParenthesis);
             console.log("BALANCED: " + display.value);
 
-            // [\b] string boundary
-            // Replace sin cos tan to math functions
-            display.value = display.value
-                .replace(/\bsin\s*\(/g, "Math.sin(")
-                .replace(/\bcos\s*\(/g, "Math.cos(")
-                .replace(/\btan\s*\(/g, "Math.tan(")
-                .replace(/\blog\s*\(/g, "Math.log(")
-                .replace(/\blog10\s*\(/g, "Math.log10(");
-
-            console.log("FINAL VALUE: " + display.value);
         }
+        // [\b] string boundary
+        // Replace sin cos tan to math functions
+        display.value = display.value
+            .replace(/\bsin\s*\(/g, "Math.sin(")
+            .replace(/\bcos\s*\(/g, "Math.cos(")
+            .replace(/\btan\s*\(/g, "Math.tan(")
+            .replace(/\blog\s*\(/g, "Math.log(")
+            .replace(/\blog10\s*\(/g, "Math.log10(")
+            .replace(/\bsqrt\s*\(/g, "Math.sqrt(");
+        console.log("FINAL VALUE: " + display.value);
 
         display.value = eval(display.value);
 
@@ -214,8 +235,9 @@ function Calculate()
 
 }
 
-console.log(Math.log10(9));
-console.log(Math.log(9));
+
+console.log("π");
+console.log(Math.PI);
 
 function OnClickOperators(operator)
 {
